@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "test-library-for-testing": {
+      "projectType": "library",
+      "root": "projects/test-library-for-testing",
+      "sourceRoot": "projects/test-library-for-testing/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/test-library-for-testing/tsconfig.lib.json",
+            "project": "projects/test-library-for-testing/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/test-library-for-testing/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/test-library-for-testing/src/test.ts",
+            "tsConfig": "projects/test-library-for-testing/tsconfig.spec.json",
+            "karmaConfig": "projects/test-library-for-testing/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/test-library-for-testing/tsconfig.lib.json",
+              "projects/test-library-for-testing/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "test-library-for-testing"
 }

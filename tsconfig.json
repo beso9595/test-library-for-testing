@@ -15,7 +15,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "test-library-for-testing": [
+        "dist/test-library-for-testing/test-library-for-testing",
+        "dist/test-library-for-testing"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false
