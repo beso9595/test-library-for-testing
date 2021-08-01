@@ -1,27 +1,55 @@
-# TestLibraryForTestingWorkspace
+# Test Library For Testing Workspace
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+## npm: [test-library-for-testing](https://www.npmjs.com/package/test-library-for-testing)
 
-## Development server
+`ng new test-library-for-testing-workspace --create-application=false`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`cd test-library-for-testing-workspace`
 
-## Code scaffolding
+`ng generate library test-library-for-testing`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`ng build --configuration production`
 
-## Build
+`cd dist/test-library-for-testing`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+`npm adduser`
 
-## Running unit tests
+Make sure you enter correct username and password of your account on npmjs.com.
+Email must match the email you have registered that account with.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`npm publish`
 
-## Running end-to-end tests
+When you change things and want to update it on npmjs.com you must change the version in your `test-library-for-testing` and start doing same from building step.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Everything you export in `public-api.ts` file will be available outside for other project to use it.
 
-## Further help
+I've wrote my test method in service:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<pre>
+@Injectable({
+    providedIn: 'root'
+})
+export class TestLibraryForTestingService {
+
+    constructor() {
+    }
+
+    getColors(): string[] {
+        return [
+            'green',
+            'red',
+            'yellow',
+            'blue',
+        ];
+    }
+}
+</pre>
+
+You install the package in your project: `npm i test-library-for-testing --save`
+
+And then you can call it:
+<pre>
+constructor(private testLibraryForTestingService: TestLibraryForTestingService) {
+    console.log(testLibraryForTestingService.getColors());
+}
+</pre>
